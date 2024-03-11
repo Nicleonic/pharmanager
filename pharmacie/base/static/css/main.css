@@ -1,0 +1,214 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --primary: rgb(117, 173, 221);
+    --color1: rgb(0, 203, 193);
+    --color2: rgb(62, 91, 171);
+    --color3: rgb(17, 69, 94);
+    --color4: rgb(128, 196, 233);
+    --color5: rgb(221, 233, 240);
+    --color6: rgb(178, 191, 223);
+    --color7: rgb(255, 255, 255);
+    --color8: rgb(0, 46, 26);
+    --color9: rgba(0, 0, 0, 0.32);
+    --color10: rgb(255, 18, 48);
+    --color11: rgb(0, 170, 114);
+}
+.bck1{
+    background-image: url("pharmanursing.png");
+    background-attachment: scroll;
+    background-size: cover;
+}
+.backdrop{
+    backdrop-filter: blur(100px);
+}
+.head_h{
+    position: fixed;
+    z-index: 999;
+    background-color:var(--primary);
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 70px;
+    padding: 1rem 3%;
+}
+.head_h > .nav{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.head_h > .nav > .logo{
+    height: 2rem;
+    position: relative;
+    display: flex;
+}
+.head_h > .nav > .logo .title{
+    color: white;
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+.head_h > .nav > .logo > img{
+    height: 2rem;
+    width: 2rem;
+}
+.nav > .menu{
+    border: 0px solid khaki;
+}
+.nav > .menu > ul{
+    display: flex;
+}
+.nav > .menu > ul > li{
+    transition: all ease-in .4s;
+    list-style: none;
+    font-size: 1rem;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.menu > ul > li:hover{
+    scale: 1.2;
+    color: var(--color10);
+}
+
+.search{
+    z-index: 999;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 20rem;
+    display: none;
+}
+.search > input{
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 16rem;
+    padding: .4rem 1rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+}
+.search.active{
+    display: block;
+}
+
+
+.grid_section{
+    min-height: 80vh;
+    padding: 7rem 3%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.grid_section > .medocItem a{
+    text-decoration: none;
+}
+.grid_section > .medocItem a > .title{
+    color: var(--color11);
+    font-size: 1.4rem;
+}
+.grid_section > .medocItem a > div span{
+    color: var(--color11);
+}
+.grid_section > .medocItem a{
+    padding: 9%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+}
+.grid_section > .medocItem a:hover{
+    background-color: var(--primary);
+    color: white;
+}
+.grid_section > .medocItem a:hover ~ .grid_section > .medocItem a > div span{
+    color: var(--color1);
+}
+
+/* ========================================== */
+.grid_section > .medocItem> .title{
+    color: var(--color11);
+    font-size: 1.4rem;
+}
+.grid_section > .medocItem> div span{
+    color: var(--color11);
+}
+.grid_section > .medocItem{
+    padding: 9%;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+}
+.grid_section > .medocItem:hover{
+    background-color: var(--primary);
+    color: white;
+}
+.grid_section > .medocItem:hover ~ .grid_section > .medocItem> div span{
+    color: var(--color1);
+}
+/* -============================================== */
+
+
+.menu_sm{
+    display: none;
+    width: 5rem;
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.menu_sm > svg{
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .grid_section{
+        grid-template-columns: 1fr;
+    }
+    .nav > .menu > ul{
+        display: block;
+        transform-origin: right;
+        transition: all ease-in .8s;
+        height: 100vh;
+        border: 2px solid forestgreen;
+        position: absolute;
+        right: -12rem;
+        top: 56px;
+        width: 10rem;
+    }
+    .nav > .menu > ul.active{
+        background-color: rgba(117, 172, 221, 0.623);
+        backdrop-filter: blur(15px);
+        transform-origin: left;
+        display: block;
+        transition: all ease-in .4s;
+        right: -.5rem!important;
+    }
+    .menu > ul > li{
+        border: 0px solid firebrick;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all ease .3s;
+    }
+    .menu_sm{
+        display: flex;
+    }
+}
+
+
+

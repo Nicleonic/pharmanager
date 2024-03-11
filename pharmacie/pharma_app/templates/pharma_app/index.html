@@ -1,0 +1,94 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+<header>
+    <div class="container head_h backdrop">
+        <div class="nav">
+            <div class="logo">
+                <img src="{% static "img/icon.png" %}" alt="">
+                <h2 class="title">Pharmacy M.</h2>
+            </div>
+            <div  class="menu">
+                <ul id="menu_nav">
+                    <li>Categories</li>
+                    <li>Inventory</li>
+                    <li id="search">Search</li>
+                    <li>Config.</li>
+                    <li>Account</li>
+                </ul>
+            </div>
+            <div class="menu_sm">
+                <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                  
+            </div>
+
+        </div>
+        <div class="search" id="searchForm">
+            <input type="text">
+        </div>
+    </div>
+</header>
+
+<!-- section medocs list grid -->
+<section class="grid_section">
+
+    {% for medoc in medicaments %}
+
+
+    <div class="medocItem">
+        <a href="{% url "pharma_app:item_view" medoc.id %}">
+            <div class="title">
+                {{medoc.nom}}
+            </div>
+            <div class="count">
+            Prix :  <span>{{medoc.prix}}</span>
+            </div>
+            <div class="dateExp">
+                Quantité :  <span>{{medoc.stock}}</span>
+            </div>
+            <div class="dateExp">
+            Exp. date :  <span>{{medoc.date_exp}}</span>
+            </div>
+
+        </a>
+    </div>
+
+    
+    {% endfor %}
+
+    
+
+</section>
+
+
+
+
+
+<script>
+    let searchBt = document.getElementById('search');
+    let searchForm = document.getElementById('searchForm');
+
+    searchBt.addEventListener('click', (e)=>{
+        if(searchForm.classList.contains('active')){
+            searchForm.classList.remove('active')
+        }
+        else{
+            searchForm.classList.add('active')
+        }
+    })
+
+    document.getElementById('menu_btn').addEventListener("click", (e)=>{
+        if( document.getElementById('menu_nav').classList.contains("active")){
+            document.getElementById('menu_nav').classList.remove("active")
+        }
+        else{
+            document.getElementById('menu_nav').classList.add('active')
+        }
+    })
+</script>
+
+{% endblock %}

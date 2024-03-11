@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Important meta tags (MUST COME FIRST) -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Information -->
+	<meta name="description" content="Blog about Congolese Food and Recipes">
+	<meta name="author" content="Johnson Nicleonic">
+	<link rel="icon" href="{% static 'img/icon.png' %}">
+
+	<!-- Block: title -->
+	<title>{% block 'title' %}  
+        {% if title%} {{title}}  {%else %} Phamanger {% endif %}
+        {% endblock %}</title>
+    
+	<!-- CSS Imports -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+
+
+</head>
+
+<body>
+	<!-- Block: content -->
+	{% block 'content' %}
+
+	{% endblock %}
+</body>
+</html>
+
+
