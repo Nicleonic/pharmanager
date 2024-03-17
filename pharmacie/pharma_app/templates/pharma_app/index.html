@@ -38,25 +38,28 @@
 
     {% for medoc in medicaments %}
 
-
-    <div class="medocItem">
-        <a href="{% url "pharma_app:item_view" medoc.id %}">
-            <div class="title">
-                {{medoc.nom}}
+    <a href="{% url "pharma_app:item_view" medoc.id %}">
+        <div class="medocItem">
+            <div class="imageItem">
+                <img src="{% static "img/icon.png" %}"  alt="">
             </div>
-            <div class="count">
-            Prix :  <span>{{medoc.prix}}</span>
+            <div class="details">
+                <div class="title">
+                    {{medoc.nom}}
+                </div>
+                <div class="count">
+                    Quantity :  <span>{{medoc.stock}}</span>
+                </div>
+                <div class="price">
+                    Price :  <span><span>{{medoc.prix}}</span></span>Fc
+                </div>
+                <div class="dateExp">
+                    Exp. date :  <span>{{medoc.date_exp}}</span>
+                </div>
             </div>
-            <div class="dateExp">
-                Quantité :  <span>{{medoc.stock}}</span>
-            </div>
-            <div class="dateExp">
-            Exp. date :  <span>{{medoc.date_exp}}</span>
-            </div>
-
-        </a>
-    </div>
-
+        </div>  
+    </a>
+   
     
     {% endfor %}
 

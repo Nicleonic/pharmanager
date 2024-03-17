@@ -1,9 +1,39 @@
+/* @import url('font/Poppins-Light.ttf'); */
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsB';
+    src: url('../font/Poppins-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsSB';
+    src: url('../font/Poppins-SemiBold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsBI';
+    src: url('../font/Poppins-BoldItalic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'PoppinsSB',sans-serif;
+
 }
 :root{
+    --hover:rgb(0, 60, 81);
+    --background: rgba(246, 246, 242, 0.915);
     --primary: rgb(117, 173, 221);
     --color1: rgb(0, 203, 193);
     --color2: rgb(62, 91, 171);
@@ -25,6 +55,12 @@
 .backdrop{
     backdrop-filter: blur(100px);
 }
+/* --------------------------------------- */
+body{
+    background-color:var(--background);
+    padding: 1 7rem;
+}
+/* --------------------------------------- */
 .head_h{
     position: fixed;
     z-index: 999;
@@ -71,7 +107,7 @@
 }
 .menu > ul > li:hover{
     scale: 1.2;
-    color: var(--color10);
+    color: var(--hover);
 }
 
 .search{
@@ -98,67 +134,56 @@
 
 .grid_section{
     min-height: 80vh;
-    padding: 7rem 3%;
+    padding: 7rem 7%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    /* grid-template-columns: repeat(5, 1fr); */
     gap: 20px;
 }
-.grid_section > .medocItem a{
-    text-decoration: none;
-}
-.grid_section > .medocItem a > .title{
-    color: var(--color11);
-    font-size: 1.4rem;
-}
-.grid_section > .medocItem a > div span{
-    color: var(--color11);
-}
-.grid_section > .medocItem a{
-    padding: 9%;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    background-color: white;
-}
-.grid_section > .medocItem a:hover{
-    background-color: var(--primary);
-    color: white;
-}
-.grid_section > .medocItem a:hover ~ .grid_section > .medocItem a > div span{
-    color: var(--color1);
-}
-
-/* ========================================== */
-.grid_section > .medocItem> .title{
-    color: var(--color11);
-    font-size: 1.4rem;
-}
-.grid_section > .medocItem> div span{
-    color: var(--color11);
-}
+/* .grid_section > .medocItem > div span{
+    color: var(--hover);
+} */
 .grid_section > .medocItem{
-    padding: 9%;
+    min-width: 12rem;
+    height: 20rem;
+    padding: 1rem 1%;
     cursor: pointer;
-    border: 2px solid var(--primary);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background-color: white;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.medocItem .imageItem{
+    position: relative;
+    overflow: hidden;
+    width: 10rem;
+    height: 10rem;
+}
+.medocItem .imageItem > img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%!important;
 }
 .grid_section > .medocItem:hover{
     background-color: var(--primary);
     color: white;
 }
-.grid_section > .medocItem:hover ~ .grid_section > .medocItem> div span{
-    color: var(--color1);
+.medocItem .details{
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
-/* -============================================== */
-
+.medocItem .imageItem .details >*{
+   border: 2px solid red;
+}
+.details span{
+    color: var(--color11);
+}
 
 .menu_sm{
     display: none;
@@ -174,10 +199,15 @@
     cursor: pointer;
 }
 
+
+
+
+/* Media query pour les tablettes */
+
+
+/* Media query pour les petits écrans */
 @media (max-width: 767px) {
-    .grid_section{
-        grid-template-columns: 1fr;
-    }
+    
     .nav > .menu > ul{
         display: block;
         transform-origin: right;
@@ -209,6 +239,8 @@
         display: flex;
     }
 }
-
-
-
+@media (max-width: 500px) {
+    .grid_section{
+        grid-template-columns: repeat(1fr);
+    }
+}

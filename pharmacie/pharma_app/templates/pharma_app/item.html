@@ -34,35 +34,94 @@
 </header>
 
 <!-- section medocs list grid -->
-<section class="grid_section">
 
-    <a href href="{% url 'pharma_app:index' %}"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
-      </svg>
+
+<section class="item_section">
+    <a class="back" href="{% url 'pharma_app:index' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
     </a>
-      
-    
-    <div class="medocItem">
-        <div class="title">
-            {{medoc.nom}}
+
+    <div class="top_container">
+        <div class="item_img">
+            <img src="{% static "img/pharmanursing.png" %}" alt="Image du medicament">
         </div>
-        <div class="count">
-        Prix :  <span>{{medoc.prix}}</span>
-        </div>
-        <div class="dateExp">
-            Quantité :  <span>{{medoc.stock}}</span>
-        </div>
-        <div class="dateExp">
-        Exp. date :  <span>{{medoc.date_exp}}</span>
+        <div class="item_info">
+            <ul>
+                <li class="item_name">
+                    {{medoc.nom}}
+                </li>
+                <li class="price">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z" />
+                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v.816a3.836 3.836 0 0 0-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 0 1-.921-.421l-.879-.66a.75.75 0 0 0-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 0 0 1.5 0v-.81a4.124 4.124 0 0 0 1.821-.749c.745-.559 1.179-1.344 1.179-2.191 0-.847-.434-1.632-1.179-2.191a4.122 4.122 0 0 0-1.821-.75V8.354c.29.082.559.213.786.393l.415.33a.75.75 0 0 0 .933-1.175l-.415-.33a3.836 3.836 0 0 0-1.719-.755V6Z" clip-rule="evenodd" />
+                    </svg>
+                    <h2><span>{{medoc.prix}}</span> Fc</h2>
+                </li>
+                <li class="quatity">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M21 6.375c0 2.692-4.03 4.875-9 4.875S3 9.067 3 6.375 7.03 1.5 12 1.5s9 2.183 9 4.875Z" />
+                        <path d="M12 12.75c2.685 0 5.19-.586 7.078-1.609a8.283 8.283 0 0 0 1.897-1.384c.016.121.025.244.025.368C21 12.817 16.97 15 12 15s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.285 8.285 0 0 0 1.897 1.384C6.809 12.164 9.315 12.75 12 12.75Z" />
+                        <path d="M12 16.5c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 0 0 1.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 0 0 1.897 1.384C6.809 15.914 9.315 16.5 12 16.5Z" />
+                        <path d="M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 0 0 1.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 0 0 1.897 1.384C6.809 19.664 9.315 20.25 12 20.25Z" />
+                    </svg>
+                    <h2><span>{{medoc.stock}}</span> Items</h2>
+                </li>
+                <li class="exp_date">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+                        <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
+                    </svg>
+                    <h2>{{medoc.date_exp}}</h2>
+                </li>
+            </ul>
         </div>
     </div>
+
+    <div class="item_details">
+        <h2>Description</h2>
+        <p>{{medoc.description}}</p>
+    </div>
+    
+
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-section">
+            <h3>Coordonnées</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 8 Rue Mustafa, Beni, RDC</p>
+            <p><i class="fas fa-phone"></i> (992) 959-514</p>
+            <p><i class="fas fa-envelope"></i> info@pharmacie.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="{% url 'pharma_app:index' %}">Accueil</a></li>
+                {% comment %} <li><a href="#">Produits</a></li>
+                <li><a href="#">Services</a></li> {% endcomment %}
+                <li><a href="{% url 'pharma_app:about' %}">À propos</a></li>
+                {% comment %} <li><a href="#">Contact</a></li> {% endcomment %}
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Certifications</h3>
+            <img src="{% static "img/icon.png" %}" alt="Logo Certification 1">
+            <img src="{% static "img/icon2.png" %}" alt="Logo Certification 2">
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <span id="annee"></span> <span id="dev">Nicleonic2.0</span>. Tous droits réservés.</p>
+    </div>
+</footer>
+
+    
 
 
    
 
     
 
-</section>
 
 
 
@@ -89,6 +148,9 @@
             document.getElementById('menu_nav').classList.add('active')
         }
     })
+    const anneeElement = document.getElementById('annee');
+    const anneeCourante = new Date().getFullYear();
+    anneeElement.textContent = anneeCourante;
 </script>
 
 {% endblock %}

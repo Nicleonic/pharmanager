@@ -1,0 +1,489 @@
+/* @import url('font/Poppins-Light.ttf'); */
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsB';
+    src: url('../font/Poppins-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsSB';
+    src: url('../font/Poppins-SemiBold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PoppinsBI';
+    src: url('../font/Poppins-BoldItalic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'PoppinsSB',sans-serif;
+
+}
+:root{
+    --hover:rgb(0, 60, 81);
+    --background: rgba(246, 246, 242, 0.915);
+    --primary: rgb(117, 173, 221);
+    --color1: rgb(0, 203, 193);
+    --color2: rgb(62, 91, 171);
+    --color3: rgb(17, 69, 94);
+    --color4: rgb(128, 196, 233);
+    --color5: rgb(221, 233, 240);
+    --color6: rgb(178, 191, 223);
+    --color7: rgb(255, 255, 255);
+    --color8: rgb(0, 46, 26);
+    --color9: rgba(0, 0, 0, 0.32);
+    --color10: rgb(255, 18, 48);
+    --color11: rgb(0, 170, 114);
+}
+.bck1{
+    background-image: url("pharmanursing.png");
+    background-attachment: scroll;
+    background-size: cover;
+}
+.backdrop{
+    backdrop-filter: blur(100px);
+}
+/* --------------------------------------- */
+body{
+    background-color:var(--background);
+    padding: 1 7rem;
+}
+/* --------------------------------------- */
+.head_h{
+    position: fixed;
+    z-index: 999;
+    background-color:var(--primary);
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 70px;
+    padding: 1rem 3%;
+}
+.head_h > .nav{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.head_h > .nav > .logo{
+    height: 2rem;
+    position: relative;
+    display: flex;
+}
+.head_h > .nav > .logo .title{
+    color: white;
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+.head_h > .nav > .logo > img{
+    border-radius:1.5rem;
+    border: 2px solid white;
+    height: 3rem;
+    width: 3rem;
+}
+.nav > .menu{
+    border: 0px solid khaki;
+}
+.nav > .menu > ul{
+    display: flex;
+}
+.nav > .menu > ul > li{
+    transition: all ease-in .4s;
+    list-style: none;
+    font-size: 1rem;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-family: "Poppins";
+
+}
+.menu > ul > li:hover{
+    scale: 1.2;
+    color: var(--hover);
+}
+
+.search{
+    z-index: 999;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 20rem;
+    display: none;
+}
+.search > input{
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 16rem;
+    padding: .4rem 1rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 2px solid var(--primary);
+    font-family: "Poppins";
+}
+.search.active{
+    display: block;
+}
+
+
+.grid_section{
+    position: relative;
+    min-height: 80vh;
+    padding: 7rem 7%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    /* grid-template-columns: repeat(5, 1fr); */
+    gap: 20px;
+}
+/* .grid_section > .medocItem > div span{
+    color: var(--hover);
+} */
+.grid_section > a .medocItem{
+    min-width: 12rem;
+    transition: all ease-in .3s;
+    height: 20rem;
+    padding: 1rem 1%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border-radius: 5px; */
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.grid_section > a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.grid_section > a .medocItem:hover{
+    /* background-color: var(--primary); */
+    /* scale: 1.01;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 1px; */
+
+    /* color: white; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+.medocItem .details{
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.medocItem .details .title{
+   font-size: 1.4rem;
+   text-align: center;
+   font-family: "Poppins";
+
+}
+.medocItem .details > * {
+   font-family: "PoppinsSB";
+    
+}
+.medocItem .details > * span{
+    font-family: "Poppins";
+ }
+.details span{
+    color: var(--color11);
+}
+.medocItem .imageItem{
+    position: relative;
+    overflow: hidden;
+    width: 10rem;
+    height: 10rem;
+}
+.medocItem .imageItem > img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%!important;
+}
+.menu_sm{
+    display: none;
+    width: 5rem;
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.menu_sm > svg{
+    color: white;
+    cursor: pointer;
+}
+/* ========================================= About Section ========================================= */
+.about_pm{
+    padding: 2rem 7%;
+    min-height: 100vh;
+    position: relative;
+}
+.circle_h{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.circle_h > h2{
+    border: 2px solid var(--primary);
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title_h{
+    display: flex;
+    justify-content: center;
+}
+.content ul{
+    margin-left: 3rem;
+}
+.content ul li, .content > p{
+    font-family: "Poppins";
+}
+.section_a p{
+    font-family: "Poppins";
+}
+
+/* ---------------------------------------- end About ------------------------------------- */
+/* ================================ Item Details ================================= */
+section{
+    padding-top: 100px;
+}
+.item_section{
+    min-height: 100vh;
+    padding: 7rem 3%;
+}
+.item_section > *{
+    border: 0px solid goldenrod;
+}
+.item_section a{
+    text-decoration: none;
+    color: inherit;
+}
+.back{
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    top: 5rem;
+    left: 2rem;
+}
+.top_container{
+    min-height: 4rem;
+    width: 100%;
+    border: 2px solid rgb(162, 172, 162);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 20px;
+    overflow-x: hidden;
+}
+.top_container > *{
+    width: 100%;
+    height: auto;
+   padding: 1rem 2%;
+}
+.top_container .item_img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.item_img{
+    border: 0px solid royalblue;
+
+}
+.item_img > img{
+    height: 16rem;
+    width: 16rem;
+}
+.item_details{
+    border: 2px solid var(--primary);
+    min-height: 10rem;
+    padding: 2rem 3%;
+
+}
+.item_details p{
+    font-family: "Poppins";
+}
+.item_info{
+    border: 0px solid forestgreen;
+}
+.item_info ul{
+    border: 0px solid orange;
+}
+.item_info ul li{
+    display: flex;
+    list-style: none;
+}
+.item_info ul li svg{
+    margin-right: .5rem;
+    height: 2rem;
+    width: 2rem;
+}
+.item_info ul li h2 span{
+    color: var(--primary);
+}
+.item_name{
+    font-size: 2rem;
+    color: var(--primary);
+}
+.footer{
+    width: 100%;
+    background-color:var(--primary);padding: 1.5rem;
+
+}
+
+/*--------------------------------------------------------------*/
+.footer {
+    background-color: #f5f5f5;
+    padding: 40px auto;
+    background: var(--primary);
+  }
+  .footer .container {
+    padding: 1rem 7%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer .container >  {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex-basis: 33.33%;
+  }
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .footer-section p {
+    font-family: "Poppins";
+    margin: 5px 0;
+  }
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  .footer-section ul li a {
+    font-family: "Poppins";
+    text-decoration: none;
+    color: inherit;
+  }
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  .footer-bottom {
+    font-family: "Poppins";
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .footer-section img{
+    width: 2rem;
+    height: 2rem;
+}
+#dev{
+    font-family: "Poppins";
+}
+
+/* ----------------------------------- Item Deatails end -------------------------- */
+
+
+
+
+/* Media query pour les tablettes */
+@media (max-width: 950px) {
+    .grid_section{
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 767px) {
+    
+    .nav > .menu > ul{
+        display: block;
+        transform-origin: right;
+        transition: all ease-in .8s;
+        height: 100vh;
+        border: 2px solid forestgreen;
+        position: absolute;
+        right: -12rem;
+        top: 56px;
+        width: 10rem;
+    }
+    .nav > .menu > ul.active{
+        background-color: rgba(117, 172, 221, 0.623);
+        backdrop-filter: blur(15px);
+        transform-origin: left;
+        display: block;
+        transition: all ease-in .4s;
+        right: -.5rem!important;
+    }
+    .menu > ul > li{
+        border: 0px solid firebrick;
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all ease .3s;
+    }
+    .menu_sm{
+        display: flex;
+    }
+    /* ---------------- footer     */
+    .footer {
+        background-color: #f5f5f5;
+        padding: 40px auto;
+        background: var(--primary);
+    }
+    .footer .container {
+    padding: 1rem 7%;
+        display: block;
+        position: relative;
+    }
+    .footer .container >*{
+        width: 100%;
+    }
+    /* ------------- top_container (item.html) */
+    .top_container > *{
+        width: 100%;
+        height: auto;
+       padding: 1rem 14%;
+    }
+    /* .top_container{
+        display: block;
+        position: relative;
+    }
+    .top_container > *{
+        width: 100%;
+    } */
+    
+}
+@media (max-width: 500px) {
+    .grid_section{
+        grid-template-columns: repeat(1fr);
+    }
+}
