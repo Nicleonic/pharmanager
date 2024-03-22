@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+    <!-- section medocs list grid -->
+    <div class="container_del">
+        <h1>Supprimer un médicament</h1>
+        <h2>{{ medicament.nom }} </h2>
+        <p>Êtes-vous sûr de vouloir supprimer cet élément médicament ?</p>
+        <div class="buttons-container">
+           
+
+            <form method="post" action="{% url 'pharma_app:delete_item' medicament.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Confirmer">
+            </form>
+
+            <a href="{% url "pharma_app:item_view" medicament.id %}">
+                <button class="cancel-button">
+                    Annuler
+                </button>    
+            </a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+

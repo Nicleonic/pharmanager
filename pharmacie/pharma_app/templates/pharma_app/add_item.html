@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+    <!-- section medocs list grid -->
+    <div class="container_add_med">
+        <div class="form_add_med">
+        <h1>Ajouter un médicament</h1>
+
+        <form action="{% url 'pharma_app:post_item' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+    </div>
+
+
+{% endblock %}

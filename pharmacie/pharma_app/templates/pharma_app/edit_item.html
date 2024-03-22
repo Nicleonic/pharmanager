@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+<!-- section medocs list grid -->
+    <div class="container_add_med">
+        <div class="form_add_med">
+            <h1>Modifier un médicament</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+        
+                <button type="submit">Modifier</button>
+            </form>
+        </div>
+    </div>
+    
+
+
+
+{% endblock %}
+
+
+

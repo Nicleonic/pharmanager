@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block 'content' %}
+
+    <section class="404">
+        <h1>Erreur 404 - Page non trouvée</h1>
+        <p>Désolé, la page que vous recherchez n'a pas été trouvée.</p>
+        <p>L'URL demandée : {{ request.path }}</p>
+        <img src="{% static "img/404Blue.jpg" %}" alt="Image personnalisée">
+    </section>
+
+{% endblock %}

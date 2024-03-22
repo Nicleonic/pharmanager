@@ -58,7 +58,7 @@
 /* --------------------------------------- */
 body{
     background-color:var(--background);
-    padding: 1 7rem;
+    padding: 7rem auto;
 }
 /* --------------------------------------- */
 .head_h{
@@ -78,6 +78,7 @@ body{
     justify-content: space-between;
 }
 .head_h > .nav > .logo{
+    cursor: pointer;
     height: 2rem;
     position: relative;
     display: flex;
@@ -119,18 +120,21 @@ body{
     position: absolute;
     top: 70px;
     right: 20px;
-    width: 20rem;
+    width: 25rem;
     display: none;
+}
+.search > input::placeholder{
+    font-size: .8rem;
+    font-weight: lighter;
+    color: var(--hover);
 }
 .search > input{
     color: var(--primary);
-    font-size: 1.2rem;
-    width: 16rem;
+    width: 20rem;
     padding: .4rem 1rem;
     height: 2rem;
     border-radius: 5px;
     border: 2px solid var(--primary);
-    font-family: "Poppins";
 }
 .search.active{
     display: block;
@@ -228,6 +232,7 @@ body{
 /* ========================================= About Section ========================================= */
 .about_pm{
     padding: 2rem 7%;
+    background: var(--primary);
     min-height: 100vh;
     position: relative;
 }
@@ -239,7 +244,7 @@ body{
     justify-content: center;
 }
 .circle_h > h2{
-    border: 2px solid var(--primary);
+    border: 2px solid var(--color4);
     position: relative;
     width: 8rem;
     height: 8rem;
@@ -284,6 +289,9 @@ section{
     position: fixed;
     top: 5rem;
     left: 2rem;
+}
+.back svg:hover{
+    color: var(--primary);
 }
 .top_container{
     min-height: 4rem;
@@ -349,6 +357,55 @@ section{
     background-color:var(--primary);padding: 1.5rem;
 
 }
+/*========================= controls ======================*/
+.controls{
+    padding: 1rem 2%;
+    margin-bottom: 0px;
+    display: flex;
+}
+.controls > a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 1rem;
+    position: relative;
+    transition: all ease-in .3s;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
+    width: 3rem;
+    height: 3rem;
+}
+.controls > a > svg{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.controls > a:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+/* ======================================= Tooltip    */
+.tooltip {
+    left: -6rem;
+    top: -2rem;
+    position: absolute;
+    display: none;
+    width: auto;
+    min-width: 5rem;
+    background-color: rgba(117, 172, 221, 0.663);
+    color: #fff;
+    font-family: "Poppins";
+    font-size: .8rem;
+    padding: 5px;
+    border-radius: 5px;
+}
+    
+.tooltip-btn:hover + .tooltip {
+    transition: all ease-out 1s;
+    transform-origin: top;
+    display: block;
+}
+/* ======================================= Tooltip    */
 
 /*--------------------------------------------------------------*/
 .footer {
@@ -409,14 +466,188 @@ section{
 }
 
 /* ----------------------------------- Item Deatails end -------------------------- */
+/*  ========================= add_item ================= */
+.add_item{
+    z-index: 1000;
+    display: flex;
+    justify-content: end;
+    position: fixed;
+    top: 5rem;
+    width: 100%;
+}
 
+.add_item > a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 1rem;
+    position: relative;
+    transition: all ease-in .3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);*/
+    width: 3rem;
+    height: 3rem;
+}
+.add_item > a > svg{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.add_item > a:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+/* -------------------------- form add_item ------------------------ */
 
+.container_add_med {
+    font-family: "Poppins";
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.form_add_med{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 3%;
+}
+.form_add_med > *{
+    width: 100%;
+}
+.form_add_med h1 {
+    font-family: "PoppinsB";
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form_add_med .form-group {
+    margin-bottom: 15px;
+}
+
+.form_add_med label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: "Poppins";
+}
+
+.form_add_med input,
+.form_add_med textarea {
+    font-family: "Poppins";
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input[type="submit"],
+button[type="submit"]  {
+    font-family: "Poppins";
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+.form_add_med button:hover {
+    background-color: var(--color2);
+}
+/* -------------------------- form add_item ------------------------ */
+
+/* ======================== Delete Medicament ======================= */
+.container_del {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.container_del h1 {
+    margin-bottom: 5px;
+}
+.container_del h2 {
+    font-family: "Poppins";
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+.container_del p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-family: "Poppins";
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.buttons-container a {
+   text-decoration: none;
+   text-decoration: inherit;
+    cursor: pointer;
+}
+
+.buttons-container button {
+    font-family: "Poppins";
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.buttons-container button:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+.buttons-container > form input[type="submit"]{
+    border: 0px solid forestgreen;
+}
+.buttons-container > form input[type="submit"]:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.confirm-button {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+}
+
+.cancel-button {
+    background-color: #f2f2f2;
+    color: #000;
+    border: none;
+}
+
+/* -------------------------------------- delete Medicament */
 
 
 /* Media query pour les tablettes */
 @media (max-width: 950px) {
     .grid_section{
         grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+    .controls{
+        padding: .8rem;
+        margin-bottom: 0px;
+        justify-content: space-around;
+        display: flex;
     }
 }
 
@@ -480,10 +711,16 @@ section{
     .top_container > *{
         width: 100%;
     } */
+    .container_add_med {
+        max-width: 400px;
+    }
     
 }
 @media (max-width: 500px) {
     .grid_section{
         grid-template-columns: repeat(1fr);
+    }
+    .search{
+        right: 10px;
     }
 }
