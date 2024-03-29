@@ -26,3 +26,6 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # NEW
+
+
+# handler404 = "pharma_app.views.error404_view"

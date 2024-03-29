@@ -5,6 +5,9 @@ from .forms import *
 
 # Create your views here.
 
+def error404_view(request, exception):
+    title = 'error 404'
+    return render(request, "base/404.html", {'title': title })
 
 def search_medicament(request):
     search_term = request.GET.get('q')
