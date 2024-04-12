@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+
+{% block 'title' %}Create Account{% endblock %}
+
+{% block 'content' %}
+<main class="container_add_med">
+
+	<div class="form_add_med">
+        <h1>Create an Account</h1>
+
+		<form action="{% url 'account:create' %}" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+
+			<p>
+				<input type="submit" value="Create">
+			</p>
+			<p>
+				<a href="{% url 'login' %}">
+					<input type="button" value="Cancel">
+				</a>
+			</p>
+		</form>
+    </div>
+	
+</main>
+{% endblock %}
+

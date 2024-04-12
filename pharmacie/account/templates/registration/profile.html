@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+
+
+{% block 'title' %}User Profile{% endblock %}
+
+{% block 'content' %}
+<style> 
+  .profile {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .profile p {
+    margin: 10px 0;
+  }
+
+  .profile p strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .profile-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .profile-button:hover {
+    background-color: #45a049;
+  }
+
+  input[type="submit"].profile-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+
+  input[type="submit"].profile-button:hover {
+    background-color: #45a049;
+  }
+</style>
+
+
+<main class="profile">
+  <h1>User Profile</h1>
+
+  <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+
+  <p>
+    <a href="{% url 'account:change-profile' %}" class="profile-button">
+      Edit Profile
+    </a>
+    </p>
+    <p>
+    <a href="{% url 'password_change' %}" class="profile-button">
+      Change Password
+    </a>
+  </p>
+
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Log Out" class="profile-button">
+  </form>
+</main>
+{% endblock %}

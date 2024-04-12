@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'account',
     'base',
+    'account',
     'pharma_app',
     'django.contrib.admin',
     'django.contrib.auth',

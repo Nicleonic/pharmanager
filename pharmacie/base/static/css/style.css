@@ -139,8 +139,6 @@ body{
 .search.active{
     display: block;
 }
-
-
 .grid_section{
     position: relative;
     min-height: 80vh;
@@ -545,6 +543,23 @@ section{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+}
+.form_add_med form p{
+    padding: .5rem 0%;
+}
+.form_add_med form p > a{
+    cursor: pointer;
+}
+.form_add_med form p > a:hover{
+    background-color: var(--color6);
+}
+input[type="button"]{
+    cursor: pointer;
+}
+
+.form_add_med input[type='button']{
+    cursor: pointer;
+    margin: .5rem auto;
 }
 
 input[type="submit"],

@@ -24,6 +24,10 @@ urlpatterns = [
     
     path('', include('pharma_app.urls')),
     
+    # NEW: path for account management
+    path('account/', include('account.urls')),
+    path('account/', include('django.contrib.auth.urls')), 
+    
     path('admin/', admin.site.urls),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # NEW
 
