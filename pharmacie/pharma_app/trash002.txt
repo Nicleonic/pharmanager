@@ -5,12 +5,17 @@ from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
 
+# Créer le groupe "SuperAgents"
+SuperAgents, created = Group.objects.get_or_create(name='SuperAgents')
+
+# Ajouter un utilisateur existant au groupe "Agents"
+johnson = User.objects.get(username='johnson')
+SuperAgents.user_set.add(johnson)
 
 class Medicament(models.Model):
     class Meta:
         permissions = [
-            ("publish_medicament", "Can publish a Medecine"),
-            ("sell_medicament", "Can sell a Medecine")
+            ("publish_medicament", "Can publish a Medecine")
         ]
     id = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=100)
@@ -44,25 +49,34 @@ class Achat(models.Model):
         return f"Achat {self.id} - {self.medicament.nom} par {self.agent.nom} quantité {self.quantite}"
 
 
+'''# Obtenez le contenu de modèle pour le modèle Medicament
+content_type = ContentType.objects.get_for_model(Medicament)
 
-# ==================================== Permissions
-
-# Créer le groupe "SuperAgents"
-# SuperAgents, created = Group.objects.get_or_create(name='SuperAgents')
-# Créer le groupe "Seller"
-# Seller, created = Group.objects.get_or_create(name="Seller")
-# Seller.save()
-
-
-# Ajouter un utilisateur existant au groupe "Agents"
-# johnson = User.objects.get(username='johnson')
-# SuperAgents.user_set.add(johnson)
-
-# publish_permission = Permission.objects.get(codename='publish_medicament')
-# sell_permission = Permission.objects.get(codename="sell_medicament")
+# Créez la permission pour publier un médicament
+publish_permission, created = Permission.objects.get_or_create(
+    codename='publish_medicament',
+    name='Can publish a Medicament',
+    content_type=content_type
+)
 
 # Ajoutez la permission au groupe "SuperAgents"
-# SuperAgents.permissions.add(publish_permission)
+SuperAgents.permissions.add(publish_permission)'''
 
-# Ajoutez la permission au groupe "Seller"
-# Seller.permissions.add(sell_permission)
+'''
+
+from django.contrib.auth.models import Permission
+
+agent = Agent.objects.get(id=agent_id)  # Remplacez agent_id par l'ID de l'agent spécifique
+
+# Obtenez le contenu de modèle pour le modèle Medicament
+content_type = ContentType.objects.get_for_model(Medicament)
+
+# Créez la permission pour modifier un médicament
+change_permission, created = Permission.objects.get_or_create(
+    codename='change_medicament',
+    name='Can change a Medicament',
+    content_type=content_type
+)'''
+'''
+# Ajoutez la permission à l'agent
+Agent.user_permissions.add(change_permission)'''

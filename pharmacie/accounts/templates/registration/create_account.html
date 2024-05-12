@@ -9,7 +9,7 @@
 	<div class="form_add_med">
         <h1>Create an Account</h1>
 
-		<form action="{% url 'account:create' %}" method="POST">
+		<form action="{% url 'accounts:create' %}" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
 

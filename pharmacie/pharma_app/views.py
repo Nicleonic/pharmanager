@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render,get_object_or_404
 from .models import Medicament
 from django.http import JsonResponse
 from .forms import *
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 
@@ -46,7 +47,7 @@ def log_medicament(medicament):
         f.write(f"Stock: {medicament.stock}\n")
         f.write(f"Date d'expiration: {medicament.date_exp}\n")
         f.write("\n")
-
+@permission_required('pharma_app.add_medicament', raise_exception=True)
 def send_medicament(request):
     title = "Add Medecine"
     if request.method == "POST":
@@ -60,6 +61,7 @@ def send_medicament(request):
     return render(request, 'pharma_app/add_item.html', { "form": form , "title": title })
 
 # edit_item ======================================================================
+@permission_required('pharma_app.change_medicament', raise_exception=True)
 def edit_medicament(request, medicament_id):
     medicament = get_object_or_404(Medicament, pk=medicament_id)
     title = "Edit "+ medicament.nom
@@ -77,7 +79,7 @@ def edit_medicament(request, medicament_id):
     return render(request, 'pharma_app/edit_item.html', {'form': form, "title": title})
 
 # delete_item ======================================================================
-
+@permission_required('pharma_app.delete_medicament', raise_exception=True)
 def delete_medicament(request, medicament_id):
     # Récupérer l'objet Medicament à supprimer
     medicament = get_object_or_404(Medicament, pk=medicament_id)

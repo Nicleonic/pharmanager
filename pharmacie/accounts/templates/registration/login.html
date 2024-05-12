@@ -11,12 +11,12 @@
 		
 			{% if user.is_authenticated %}
 			<p>You are already logged in. 
-				<a href="{% url 'account:profile' %}">Go to Profile</a>
+				<a href="{% url 'accounts:profile' %}">Go to Profile</a>
 			</p>
 			
 		
 			{% else %}
-			<form action="{% url 'login' %}" method="POST">
+			<form action="{% url 'login' %}" method="POST" >
 				{% csrf_token %}
 				{{ form.as_p }}
 		
@@ -24,7 +24,7 @@
 					<input type="submit" value="Login">
 				</p>
 				<p>
-					<a href="{% url 'account:create' %}">
+					<a href="{% url 'accounts:create' %}">
 						<input type="button" value="Create Account">
 					</a>
 				</p>

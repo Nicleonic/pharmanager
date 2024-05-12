@@ -100,7 +100,19 @@ body{
 .nav > .menu > ul{
     display: flex;
 }
-.nav > .menu > ul > li{
+.nav > .menu h2.welcome_hint{
+    /* border: 2px solid forestgreen; */
+    transition: all ease-in .4s;
+    list-style: none;
+    font-size: 1.2rem;
+    color: white;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-family: "PoppinsB";
+}
+.nav > .menu > ul > li,
+.nav > .menu > ul > li a{
+    text-decoration: none;
     transition: all ease-in .4s;
     list-style: none;
     font-size: 1rem;

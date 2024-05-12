@@ -198,6 +198,10 @@ body{
     color: white;
     cursor: pointer;
 }
+/* ============================== main ================================= */
+main{
+    min-height: 100vh;
+}
 
 
 

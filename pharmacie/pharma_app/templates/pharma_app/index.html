@@ -18,19 +18,25 @@
                     <li>Config.</li>
                     <li>
                         {% if user.is_authenticated %}
-                            <a class="btn" href="{% url 'account:profile' %}">View Profile</a>
+                            <a class="btn" href="{% url 'accounts:profile' %}">View Profile</a>
                         {% else %}
                             <a class="btn" href="{% url 'login' %}">Login</a>
                         {% endif %}
                         <!--Account-->
                     </li>
                 </ul>
+                {% if user.is_authenticated %}
+                    <h2 class="welcome_hint">Welcome {{ user.username }}!</h2>
+                {% else %}
+                    <h2 class="welcome_hint"> Welcome Guest!</h2>
+                {% endif %}
             </div>
             <div class="menu_sm">
                 <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                  
+               
+
             </div>
 
         </div>
@@ -41,13 +47,15 @@
 </header>
 
 <!-- section medocs list grid -->
-<div class="add_item"> 
-    <a href="{% url "pharma_app:post_item" %}" id="add_item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-        </svg>
-    </a>
-</div>
+{% if perms.pharma_app.add_medicament %}
+    <div class="add_item"> 
+        <a href="{% url "pharma_app:post_item" %}" id="add_item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </a>
+    </div>
+{% endif%}
 <section class="grid_section">
     
 

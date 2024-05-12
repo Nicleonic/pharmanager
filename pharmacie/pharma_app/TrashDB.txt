@@ -1,0 +1,10 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'phamanager',
+        'USER': 'Johnson',
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
