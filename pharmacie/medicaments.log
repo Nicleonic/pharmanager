@@ -305,3 +305,45 @@ Prix: 500
 Stock: 8
 Date d'expiration: 2024-12-18
 
+Nom: Test_Med_Creator
+Description: Test_Med_Creator     ....... Creator = request.user
+Prix: 200
+Stock: 20
+Date d'expiration: 2024-05-29
+
+Nom: test_Form_Image
+Description: form_Image Test
+Prix: 200
+Stock: 21
+Date d'expiration: 2024-05-26
+
+Nom: Test
+Description: Test form witout Image
+Prix: 230
+Stock: 43
+Date d'expiration: 2025-03-20
+
+Nom: j
+Description: j
+Prix: 1
+Stock: 2
+Date d'expiration: 2025-03-21
+
+Nom: Test -- 3
+Description: smkshkjsd
+Prix: 2111
+Stock: 2
+Date d'expiration: 2024-06-01
+
+Nom: Test_night
+Description: lkldlksjlsa
+Prix: 233333
+Stock: 2
+Date d'expiration: 2024-09-14
+
+Nom: TestR
+Description: kjhljkhks
+Prix: 2.97
+Stock: 3
+Date d'expiration: 2024-05-26
+

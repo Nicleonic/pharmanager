@@ -1,7 +1,36 @@
 {% extends "base/base.html" %}
 {% load static %}
 
+
 {% block 'content' %}
+<style>
+    .step-links{
+        /* padding: 2rem; */
+        backdrop-filter: blur(5px);
+        border: 2px solid rgb(117, 173, 221);
+        z-index: 1000;
+        display: flex;
+        justify-content: end;
+        position: fixed;
+        bottom: .5rem;
+        right: 1rem;
+        width: 20rem;
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .step-links a{
+        color: rgb(117, 173, 221);
+        text-decoration: none;
+        margin: 0 5px;
+    }
+    .step-links span{
+        color: black;
+        margin: 0 5px;
+    }
+</style>
+
 
 <header>
     <div class="container head_h backdrop">
@@ -12,13 +41,26 @@
             </div>
             <div  class="menu">
                 <ul id="menu_nav">
-                    <li>Categories</li>
-                    <li>Inventory</li>
-                    <li id="search">Search</li>
-                    <li>Config.</li>
+                    {% if user.is_authenticated %}
+                        <!-- <li>Categories</li> -->
+                        <li>
+                            <a href="{% url 'pharma_app:about' %}">About</a>
+                        </li>
+                        <li>Inventory</li>
+                        <li id="search">Search</li>
+                        <li>Config.</li>
+                    {% endif %}
                     <li>
                         {% if user.is_authenticated %}
-                            <a class="btn" href="{% url 'accounts:profile' %}">View Profile</a>
+                            <a class="btn" href="{% url 'accounts:profile' %}">
+                                <div class="profile-image-index">
+                                    {% if profile.profile_img %}
+                                        <img src="{{ profile.profile_img.url }}" alt="{{ user.first_name }} {{ user.last_name }}">
+                                    {% else %}
+                                        <img src=" {% static "img/DefaultProfileImage.png" %}" alt="{{ user.first_name }} {{ user.last_name }}">
+                                    {% endif %}
+                                </div>
+                            </a>
                         {% else %}
                             <a class="btn" href="{% url 'login' %}">Login</a>
                         {% endif %}
@@ -30,14 +72,20 @@
                 {% else %}
                     <h2 class="welcome_hint"> Welcome Guest!</h2>
                 {% endif %}
-            </div>
-            <div class="menu_sm">
-                <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+                <!-- menu_sm -->
+                <div class="menu_sm">
                
-
+                    {% if user.is_authenticated %}
+                        <svg id="menu_btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    {% else %}
+                        <a class="btn" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+    
+                </div>
             </div>
+
 
         </div>
         <div class="search" id="searchForm">
@@ -64,7 +112,11 @@
     <a href="{% url "pharma_app:item_view" medoc.id %}">
         <div class="medocItem">
             <div class="imageItem">
-                <img src="{% static "img/icon.png" %}"  alt="">
+                {% if medoc.image %}
+                    <img src="{{medoc.image.url}}"  alt="">
+                {% else %}
+                    <img src="{% static "img/icon.png" %}"  alt="">
+                {% endif %}
             </div>
             <div class="details">
                 <div class="title">
@@ -87,8 +139,23 @@
     {% endfor %}
 
     
-
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first </a>
+            <a href="?page={{ page_obj.previous_page_number }}"> previous </a>
+        {% endif %}
+        <br>
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        <br>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"> next </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"> last &raquo;</a>
+        {% endif %}
+    </span>
 </section>
+
 
 
 

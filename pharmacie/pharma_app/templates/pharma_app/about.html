@@ -3,9 +3,15 @@
 
 {% block 'content' %}
 
-
 <!-- ========================================================= about section ==============================-->
 <section class="about_pm">
+    {% if user.is_authentificated %}
+        <a href="{% url 'accounts:profile' %}">Profile</a>
+
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+
+    {% endif %}
     <div class="circle_h">
         <h2>PM</h2>
     </div>

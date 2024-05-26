@@ -2,5 +2,14 @@ local_settings.py
 
 staticfiles
 
+media
+
+dja_env
+
+trash002.txt
+TrashDB.txt
+TrashUrl.txt
+trashModel.txt
+
 __pycache__/
 *.py[cod]

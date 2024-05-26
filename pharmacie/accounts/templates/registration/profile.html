@@ -1,80 +1,55 @@
 {% extends "base/base.html" %}
 
+{% load static %}
 
 {% block 'title' %}User Profile{% endblock %}
 
 {% block 'content' %}
-<style> 
-  .profile {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+<main class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-image">
+        {%  if profile %}
+          <a href="{% url 'pharma_app:profile_edit' %}">
+            {% if profile.profile_img %}
+              <img src="{{ profile.profile_img.url }}" alt="{{ user.first_name }} {{ user.last_name }}">
+            {% else %}
+              <img src=" {% static "img/DefaultProfileImage.png" %}" alt="{{ user.first_name }} {{ user.last_name }}">
+            {% endif %}
+          </a>
+        {% else %}
+          <a href="{% url 'pharma_app:profile_crea' %}">
+            <img src=" {% static "img/DefaultProfileImage.png" %}" alt="{{ user.first_name }} {{ user.last_name }}">
+          </a>
+        {% endif %}
+      </div>
+      <div class="profile-info">
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        {% if profile.u_name %}
+          <p><strong>Username:</strong> <em class="data">{{ profile.u_name }}</em> </p>
+        {% endif %}
+        <p><strong>Account name:</strong><em class="data"> {{ user.username }}</em> </p>
+        <p><strong>Email:</strong> <em class="data">{{ user.email }}</em> </p>
+        <p><strong>Profile:</strong> <em class="data">{{ profile }}</em> </p>
 
-  .profile h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+      </div>
+    </div>
+    <div class="profile-actions">
+      <a href="{% url 'accounts:change-profile' %}" class="profile-button">
+        Edit Account
+      </a>
+      <a href="{% url 'password_change' %}" class="profile-button">
+        Change Password
+      </a>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+		    <input type="submit" style="margin-bottom: 1rem;" value="Log Out">
+      </form>
 
-  .profile p {
-    margin: 10px 0;
-  }
-
-  .profile p strong {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-
-  .profile-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  .profile-button:hover {
-    background-color: #45a049;
-  }
-
-  input[type="submit"].profile-button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-  }
-
-  input[type="submit"].profile-button:hover {
-    background-color: #45a049;
-  }
-</style>
-
-
-<main class="profile">
-  <h1>User Profile</h1>
-
-  <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
-  <p><strong>Username:</strong> {{ user.username }}</p>
-  <p><strong>Email:</strong> {{ user.email }}</p>
-
-  <p>
-    <a href="{% url 'accounts:change-profile' %}" class="profile-button">
-      Edit Profile
-    </a>
-    </p>
-    <p>
-    <a href="{% url 'password_change' %}" class="profile-button">
-      Change Password
-    </a>
-  </p>
-
-  <form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="Log Out" class="profile-button">
-  </form>
+      <a href="{% url 'pharma_app:index' %}" class="profile-button">
+        Home
+      </a>
+    </div>
+  </div>
 </main>
 {% endblock %}

@@ -10,11 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 from pharma_app.local_settings import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,7 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'pharma_app.CustomUser',
 ]
+
+# Authentication
+# AUTH_USER_MODEL = 'pharma_app.Agent'
+'''from django.contrib.auth import get_user_model
+
+User = get_user_model()
+AUTH_USER_MODEL = 'pharma_app.CustomUser'
+AUTH_USER_MODEL = User'''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,5 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-LOGOUT_REDIRECT_URL = 'pharma_app:index'
+LOGOUT_REDIRECT_URL = 'pharma_app:about'
+LOGIN_REDIRECT_URL = 'pharma_app:index'
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

@@ -1,0 +1,78 @@
+
+{% block 'content' %}
+<main class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-image">
+        {% if user.profile.profile_picture %}
+        <img src="{{ user.profile.profile_picture.url }}" alt="{{ user.first_name }} {{ user.last_name }}">
+        {% else %}
+        <img src="/static/images/default-profile-picture.png" alt="{{ user.first_name }} {{ user.last_name }}">
+        {% endif %}
+      </div>
+      <div class="profile-info">
+        <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+      </div>
+    </div>
+    <div class="profile-actions">
+      <a href="{% url 'accounts:change-profile' %}" class="profile-button">
+        Edit Profile
+      </a>
+      <a href="{% url 'password_change' %}" class="profile-button">
+        Change Password
+      </a>
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Log Out" class="profile-button">
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+
+
+{% extends "base/base.html" %}
+
+
+{% block 'title' %}User Profile{% endblock %}
+
+{% block 'content' %}
+
+
+<main class="profile">
+  <h1>User Profile</h1>
+  <div class="profile_head">
+    <div class="left">
+      <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+
+    </div>
+    <div class="right">
+      <p>
+        <a href="{% url 'accounts:change-profile' %}" class="profile-button">
+          Edit Profile
+        </a>
+        </p>
+        <p>
+        <a href="{% url 'password_change' %}" class="profile-button">
+          Change Password
+        </a>
+
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Log Out" class="profile-button">
+        </form>
+      </p>
+    </div>
+  </div>
+
+  
+ 
+
+ 
+</main>
+{% endblock %}

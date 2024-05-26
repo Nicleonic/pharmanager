@@ -1,0 +1,35 @@
+user_passes_test(not_authenticated)
+def create_account(request):
+    user_ = None
+
+    # They are logged in, they cannot create an account
+    if request.user.is_authenticated:
+        return redirect('accounts:profile')
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        form_ = ProfileForm(request.GET)
+
+        if form.is_valid():
+            form_ = ProfileForm(request.POST)
+            p_form = form_.save(commit=False)
+            user = form.save()
+            p_form.user = user
+            p_form.u_name = form.username
+            p_form.save()
+
+
+
+            
+            print("User ___ accountCreation : ", user)
+            profile = Profile.profile_crea(user)
+            print("creation +++++++++++ : ", (profile))
+            user_ = profile
+            profile_ = Profile.profile_crea(user_)
+            print(profile_,"s Name after creation")
+            profile.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'registration/create_account.html', { 'form': form })
